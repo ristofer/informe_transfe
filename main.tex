@@ -183,6 +183,17 @@ Por lo que el flujo calórico viene dado por la ecuación:
 \end{equation}
 
 Con $\Delta T = T_1 - T_2$ es decir la diferencia de temperatura entre los medios.
+
+Debido a que los fluidos no tienen una temperatura constante a lo largo del intercambiador, se utiliza la temperatura logarítmica media para calcular el calor transferido:
+\begin{equation}
+    \Dot{Q} = k_m A_m \Delta T_{ln}
+\end{equation}
+\begin{equation}
+    \Delta T_{ln} = \frac{\Delta T_{max}-\Delta T_{min}}{\ln{ \frac{\Delta T_{max}}{\Delta T_{min}}}}
+\end{equation}
+\begin{equation}
+    A_m = \frac{A_1-A_2}{\ln{\frac{A_1}{A_2}}}
+\end{equation}
 \newpage
 
 \section{Metodología}
