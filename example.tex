@@ -1,0 +1,201 @@
+% Template:     Informe/Reporte LaTeX
+% Documento:    Archivo de ejemplo
+% Versión:      3.2.0 (24/04/2017)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        Facultad de Ciencias Físicas y Matemáticas.
+%        Universidad de Chile.
+%        pablo.pizarro@ing.uchile.cl, ppizarror.com
+%
+% Sitio web del proyecto: [http://ppizarror.com/Template-Informe/]
+% Licencia: MIT           [https://opensource.org/licenses/MIT]
+
+% NUEVA SECCIÓN
+% Las secciones se inician con \section, si se quiere una sección sin "número" se pueden usar las funciones \newtitleanum (nuevo titulo sin numeración) o la función \newtitleanumnoi para crear el mismo título sin numerar pero sin aparecer en el índice
+
+\section{Informes con \LaTeX}
+
+	% SUB-SECCIÓN
+	% Las sub-secciones se inician con \subsection, si se quiere una sub-sección sin "número" se pueden usar las funciones \newsubtitleanum (nuevo subtitulo sin numeración) o la función \newsubtitleanumnoi para crear el mismo subtítulo sin numerar pero sin aparecer en el índice
+	\subsection{Una breve introducción}
+	
+		% Esta función sirve para rellenar con un párrafo.
+		\lipsum[4]
+		
+		% Se inserta una ecuación, el primer parámetro entre corchetes es opcional (permite identificar con una etiqueta para poder referenciarlo después con \ref), seguido de aquello se escribe la ecuación en modo bruto sin signos peso
+		\insertequation[\label{eqn:identidad-imposible}]{\pow{a}{k}=\pow{b}{k}+\pow{c}{k}, \forall k>2}
+		
+		% Los párrafos se pueden añadir con \newpar o simplemente se puede escribir, esta función se hizo para evitar errores y warnings por parte del compilador. Además da la opción de poder cambiar la estructura de todos los párrafos del documento directamente al cambiar las propiedades de la función (definida en la sección DECLARACIÓN DE FUNCIONES)
+		Este es un párrafo, \textbf{newp} puede contener múltiples \quotes{Expresiones} así como \quotesit{Citas en itálico} o referencias \footnote{ Las referencias se hacen utilizando la expresión \texttt{\textbackslash label}\{etiqueta\}} a fórmulas como \eqref{eqn:formulasinsentido}, a continuación se muestra un ejemplo de inserción de imágenes (como la Figura \ref{img:testimage}):
+		
+		% Para insertar una imagen se puede usar la función \insertimage la cual toma un primer parámetro opcional para definir una etiqueta, luego toma la dirección de la imagen, sus parámetros (en este caso se definió la escala de 0.2) y un título de imagen (el cual va debajo de la imagen)
+		
+		\insertimage[\label{img:testimage}]{ejemplos/test-image.png}{scale=0.17}{Where are you? de \quotesit{Internet}}
+		
+		\newparnl{Este es un párrafo sin nueva linea, si no te gustan los comandos \textbf{newp}, \textbf{newpar} o \textbf{newparnl} simplemente puedes usar los salto de línea convencionales. Además puedes cambiarle el nombre a las funciones, así puedes tener comandos más intuitivos para ti.}
+		
+	% SUB-SECCIÓN
+	\subsection{Tablas!}
+
+		\newparnl{También puedes usar tablas, insertarlas es muy fácil, puedes usar directamente el \quotes{conversor de tablas} \textsuperscript{\cite{conversortabla}}, ahí puedes convertir en un solo clic tablas Excel, o crearlas tú mismo sin tener que hacer todo el aburridísimo código.}
+		
+		\begin{longtable}{ccc}
+			\caption{Esta es una tabla que se \quotes{corta} en varias páginas si es que le falta espacio.}\label{tabl:foo}\\
+			\hline
+			Columna 1 & Columna 2 & Columna 3\\\hline
+			\endfirsthead
+			\hline
+			Columna 1 & Columna 2 & Columna 3\\
+			\hline
+			\endhead
+			\hline
+			\endfoot
+			\hline
+			\endlastfoot
+			$\omega$ & $\nu$ & $\delta$\\     
+			$\partial$ & $\nabla$ & $\mho$\\
+			$\beta$ & $\gamma$ & $\epsilon$\\   
+			$\varepsilon$ & $\upsilon$ & $\varphi$\\
+			$\Phi$ & $\Theta$ & $\varSigma$\\
+			$\omega$ & $\nu$ & $\delta$\\     
+			$\partial$ & $\nabla$ & $\mho$\\ 
+		\end{longtable}
+		
+		
+% NUEVA SECCIÓN
+\section{Aquí un nuevo tema}
+		
+	% SUB-SECCIÓN
+	\subsection{Haciendo informes como un profesional}
+	
+		% Se inserta una imagen fija en la izquierda del documento con \insertimageleft, al igual que las demás funciones, el primer parámetro es opcional, luego viene la ubicación de la imagen, seguido de la escala, un título y por último el número de líneas que 'cortará' hacia abajo. Para insertar una imagen fija en la derecha se utiliza \insertimageright usando los mismos parámetros
+		\insertimageleft[\label{img:imagen-izquierda}]{ejemplos/test-image-wrap}{0.27}{15}{Apolo}
+	
+		Test es una palabra inglesa aceptada por la Real Academia Española (RAE). Este concepto hace referencia a las pruebas destinadas a evaluar conocimientos, aptitudes o funciones. La palabra test puede utilizarse como sinónimo de examen. Los exámenes son muy frecuentes en el ámbito educativo ya que permiten evaluar los conocimientos adquiridos por los estudiantes. Los exámenes pueden ser orales o escritos.
+		
+		\newp \lipsum[115]
+		
+		% Se inserta un nuevo párrafo de modo inteligente, evita errores de hbox, crea un nuevo par e espacia de manera fija
+		\newp \lipsum[2]
+		
+		\insertequationcaptioned[\label{eqn:formulasinsentido}]{\int_{a}^{b} f(x) dx = \fracnpartial{f(x)}{x}{\eta} \cdotp \textstyle \sum_{x=a}^{b} f(x)\cancelto{1+\frac{\epsilon}{k}}{(1+\Delta x)}}{Ecuación sin sentido}
+		
+		\lipsum[115]
+		\vspace{\defaultnewlinesize}
+		\lipsum[4]
+		
+	% SUB-SECCIÓN
+	\subsection{Otros párrafos más normales}
+	
+		% Párrafos con lipsum
+		\lipsum[7]
+		
+		\newp \lipsum[2]
+		
+		% Se inserta una ecuación larga
+		\insertequationalign[\label{eqn:eqn-larga}]{\lpow{\Lambda}{f} = \frac{L\cdot f}{W} \cdot \frac{\pow{\lpow{Q}{e}}{2}}{8 \pow{\pi}{2} \pow{W}{4} g}+ \sum_{i=1}^{l} \frac{f \cdot \big( M - d\big)}{l \cdot W} \cdot \frac{\pow{\big(\lpow{Q}{e}- i\cdot Q\big)}{2}}{8 \pow{\pi}{2} \pow{W}{4} g}}
+		
+		% Se inserta un multicols, con esto se pueden escribir en varias columnas
+		\begin{multicols}{2}
+		
+			% Párrafo 1
+			\lipsum[114]
+			
+			% Cuando se usan multicols los espacios en blanco verticales se multiplican por dos, por lo que se necesita utilizar \vspace para eliminar los espacios abusivos de las ecuaciones para que se vea mejor
+			\vspace{-0.1cm}
+			\insertequation[]{ f(x) = \fracdpartial{u}{t}}
+			
+			% Párrafo 2 del multicols
+			\lipsum[5]
+			
+		\end{multicols}
+		
+		% Último párrafo de la subsección
+		\lipsum[1]
+		
+		
+% NUEVA SECCIÓN
+\newpage	
+
+% Inserta un título (similar a una sección) sin número, una vez que se inserta un título así no se pueden volver a usar los títulos numerados
+\newtitleanum{Más ejemplos}
+
+% Inserta un subtítulo sin número
+\newsubtitleanum{Ejemplos de inserción de código fuente}
+
+	A continuación se presenta un ejemplo de inserción de código fuente en Python \footnote{ El mejor lenguaje del mundo}, Java y Matlab:
+
+\lstset{style=Python}
+\begin{lstlisting}[language=Python, caption=Ejemplo en Python]
+import numpy as np
+ 
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+\end{lstlisting}
+
+\lstset{style=Java}
+\begin{lstlisting}[language=Java, caption=Ejemplo en Java]
+import java.io.IOException; 
+import javax.servlet.*;
+
+// Hola mundo
+public class Hola extends GenericServlet 
+{
+    public void service(ServletRequest request, ServletResponse response)
+        throws ServletException, IOException
+    {
+        response.setContentType("text/html");
+        PrintWriter pw = response.getWriter();
+        pw.println("Hola, mundo!");
+        pw.close();
+    }
+}
+\end{lstlisting}
+
+\lstset{style=Matlab}
+\begin{lstlisting}[language=Java, caption=Ejemplo en Matlab]
+function list = find_coordinates( matrix, value )
+l = size(matrix);
+coordenates_list = cell(l(1)*l(2),1);
+total = 1;
+
+% Evaluación de la matriz
+for i=1:l(1)
+    for j=1:l(2)
+        if matrix(i,j)==value
+            coordenates_list{total} = [i j];
+            total = total + 1;
+        end
+    end
+end
+
+end
+\end{lstlisting}
+
+
+% REFERENCIAS
+\newpage
+\begin{thebibliography}{99}
+	\addcontentsline{toc}{section}{Referencias}
+	\fancyhead[L]{\nouppercase{Referencias}}
+		
+	\bibitem{pagwebproyecto}
+		\hbadness=10000 Template Informe en \LaTeX.
+		\textit{Revisa el manual online de este template!}
+		\\\url{http://ppizarror.com/Template-Informe/}
+		
+	\bibitem{pluginexcel}
+		\hbadness=10000 \texttt{Excel2Latex}
+		\textit{Importa de forma sencilla tus tablas de Excel a \LaTeX}
+		\\\url{https://www.ctan.org/tex-archive/support/excel2latex/}
+		
+	\bibitem{conversortabla}
+		\hbadness=10000 Tables Generator.
+		\textit{Convierte fácilmente tus tablas, o crea unas con un intuitivo editor de tablas.}
+		\\\url{http://www.tablesgenerator.com/}
+	
+\end{thebibliography}

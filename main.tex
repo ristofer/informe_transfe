@@ -1,0 +1,213 @@
+% Template:     Informe/Reporte LaTeX
+% Documento:    Archivo principal
+% Versión:      3.2.0 (24/04/2017)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        Facultad de Ciencias Físicas y Matemáticas.
+%        Universidad de Chile.
+%        pablo.pizarro@ing.uchile.cl, ppizarror.com
+%
+% Sitio web del proyecto: [http://ppizarror.com/Template-Informe/]
+% Licencia: MIT           [https://opensource.org/licenses/MIT]
+
+% CREACIÓN DEL DOCUMENTO, FUENTE E IDIOMA
+\documentclass[letterpaper,11pt]{article} % Articulo tamaño carta, fuente 11
+\usepackage[utf8]{inputenc}               % Codificación UTF-8
+\usepackage[T1]{fontenc}                  % Soporta caracteres acentuados
+\usepackage{lmodern}                      % Tipografía moderna
+\usepackage[spanish]{babel}               % Idioma del documento en español
+\def\templateversion{3.2.0}               % Versión del template
+                                            
+% INFORMACIÓN DEL DOCUMENTO
+\def\nombredelinforme {Laboratorio N°3}
+\def\temaatratar {Intercambiadores de Calor}
+\def\fecharealizacion {\today}
+\def\fechaentrega {\today}
+
+\def\autordeldocumento {Grupo 10}
+\def\nombredelcurso {Transferencia de calor}
+\def\codigodelcurso {ME-4302-1}
+
+\def\nombreuniversidad {Universidad de Chile}
+\def\nombrefacultad {Facultad de Ciencias Físicas y Matemáticas}
+\def\departamentouniversidad {Departamento de Ingeniería Mecánica}
+\def\imagendeldepartamento {images/departamentos/dimec}
+\def\imagendeldepartamentoescl {0.2}
+\def\localizacionuniversidad {Santiago, Chile}
+
+% INTEGRANTES, PROFESORES Y FECHAS
+\newcommand{\tablaintegrantes}{
+\begin{minipage}{1.0\textwidth}
+\begin{flushright}
+\begin{tabular}{ll}
+	Integrantes:
+		& \begin{tabular}[t]{@{}l@{}}
+			Leonardo Garrido \\
+			Cristopher Gómez\\   
+			Rodrigo Moraga
+		\end{tabular} \\
+	Profesores:
+		& \begin{tabular}[t]{@{}l@{}}
+			Álvaro Valencia \\
+			
+		\end{tabular} \\
+	Auxiliares:
+		& \begin{tabular}[t]{@{}l@{}}
+			Ian Wolde \\
+			
+		\end{tabular}\\
+	Ayudantes de laboratorio:
+		& \begin{tabular}[t]{@{}l@{}}
+			Erick Kracht \\
+			Ricardo Jadue
+		\end{tabular}\\
+	%\multicolumn{2}{l}{Ayudante del laboratorio: Ayudante} \\
+	& \\
+	\multicolumn{2}{l}{Fecha de realización: 20 de Noviembre de 2018} \\
+	\multicolumn{2}{l}{Fecha de entrega: 30 de Noviembre de 2018} \\
+	\multicolumn{2}{l}{\localizacionuniversidad}
+\end{tabular}
+\end{flushright}
+\end{minipage}}
+
+% CONFIGURACIONES
+\input{lib/config}
+
+% IMPORTACIÓN DE LIBRERÍAS
+\input{lib/imports}
+
+% IMPORTACIÓN DE FUNCIONES
+\input{lib/functions}
+
+% IMPORTACIÓN DE AMBIENTES Y ESTILOS
+\input{lib/styles}
+
+% CONFIGURACIÓN INICIAL DEL DOCUMENTO
+\input{lib/initconf}
+
+% INICIO DE LAS PÁGINAS
+\begin{document}
+	
+% PORTADA
+\input{lib/portrait}
+
+% CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
+\input{lib/pageconf}
+
+% RESUMEN O ABSTRACT
+\input{abstract} % Se incluye un ejemplo de resumen, se puede borrar
+
+% TABLA DE CONTENIDOS - ÍNDICE
+\input{lib/index}
+
+% CONFIGURACIONES FINALES - INICIO DE LAS SECCIONES
+\input{lib/finalconf}
+
+% ========================== INICIO DEL DOCUMENTO ==========================
+
+\section{Introducción}
+
+Los intercambiadores de calor son utilizados para transmitir calor desde un fluido a otro. El intercambio de energía suele realizarse a través de una pared termoconductora, la que impide que los fluidos se mezclen y que debido a esto se contaminen.
+\newp 
+Las aplicaciones para los intercambiadores de calor son diversas, como aparatos de refrigeración, radiadores de auto, sistemas de aire, calefón, calderas, etc.
+
+\newp
+La transmisión de calor dentro de un intercambiador de contacto indirecto se produce desde el medio caliente al medio frío.
+El fluido a mayor temperatura calienta la pared termoconductora, provocando que se el primero se enfríe y que la pared se caliente, luego, el calor transmitido por el fluido caliente a la pared es cedido al fluido a menor temperatura, provocando que su temperatura aumente. 
+Por lo anterior, en un intercambiador de calor, la temperatura de salida del fluido caliente siempre es menor a la de entrada, mientras que la del fluido frío es mayor.
+
+
+
+
+
+\newpage
+\section{Objetivos}
+\subsection{Objetivo general}
+Estudiar la transferencia de calor en intercambiadores de calor de placas planas cuando se tiene corriente paralela y corriente inversa.
+
+\subsection{Objetivos específicos}
+\begin{itemize}
+    \item Aprender el funcionamiento del equipo WL-110.02.
+    \item Controlar los caudales de los fluidos del intercambiador de calor.
+    \item Medir temperatura en los puntos de entrada y salida del intercambiador.
+    \item Calcular el calor intercambiado a partir de las mediciones de temperatura y caudal.
+    \item Calcular el coeficiente medio de transmisión térmica a partir del calor intercambiado y los parámetros geométricos del intercambiador.
+\end{itemize}
+		
+\newpage
+\section{Antecedentes}
+Los intercambiadores de calor se utilizan para transmitir calor desde un fluido a otro sin la necesidad de mezclarlos. El calor se transmite a través de una pared termoconductora que separa ambos fluidos.
+Se tiene entonces un proceso de tres partes: transmisión de calor por parte del fluido caliente a la pared, conducción de calor a través de la pared y transmisión de calor por parte de la pared al fluido frío.
+
+La ecuación que describe la transmisión de calor de un medio a la pared (o de la pared a n medio) corresponde a:
+
+\begin{equation}
+    Q = \alpha \cdot A \cdot \Delta T \cdot t
+\end{equation}
+ Donde, 
+ \begin{itemize}
+     \item $Q$ es el calor transferido.
+     \item $\alpha$ es el coeficiente de transferencia de calor del material.
+     \item $A$ es el área transversal por el cual ocurre el intercambio de calor.
+     \item $\Delta T$ Es la diferencia de temperatura entre el medio y la pared.
+     \item $t$ es el tiempo que transcurrido.
+ \end{itemize} 
+ 
+ Derivando la expresión (3.1) respecto del tiempo, se obtiene la taza de intercambio de calor :
+ 
+ \begin{equation}
+     \dot Q = \alpha \cdot A \cdot \Delta T
+ \end{equation}
+
+ Donde $\dot Q$ es el flujo calorífico medido en unidades de potencia.
+ 
+La relación que describe la conducción de calor a través de la pared es la siguiente:
+\begin{equation}
+    \Dot{Q} = \frac{\lambda A \Delta T_w}{s}
+\end{equation}
+\begin{itemize}
+    \item $\lambda$ coeficiente de conductibilidad térmica del material $[\frac{W}{m\cdot K}]$.
+    \item $A$ el área transversal a la dirección del flujo de calor $[m^2]$.
+    \item $\Delta T_w$ corresponde a la diferencia de temperatura entre los bordes de la pared $[K]$.
+    \item $s$ el espesor de la pared $[m]$.
+\end{itemize}
+
+Si se asume estado estacionario el flujo de calor del medio caliente a la pared, el flujo a través de la pared y el flujo de calor de la pared al medio frío son equivalentes.  Por lo que se puede definir un coeficiente medio de transmisión térmica $k_m$:
+\begin{equation}
+    k_m = \frac{1}{\frac{1}{\alpha_1}+\frac{s}{\lambda}+\frac{1}{\alpha_2}}
+\end{equation}
+Por lo que el flujo calórico viene dado por la ecuación:
+\begin{equation}
+    \Dot{Q} = k_m A \Delta T
+\end{equation}
+
+Con $\Delta T = T_1 - T_2$ es decir la diferencia de temperatura entre los medios.
+\newpage
+
+\section{Metodología}
+
+\newpage
+\section{Memoria de Cálculo}
+
+
+\newpage
+\section{Resultados}
+
+
+
+
+
+\newpage
+\section{Análisis de Resultados}
+
+
+
+\newpage
+\section{Conclusiones}.
+
+
+
+
+% FIN DEL DOCUMENTO
+\end{document}
