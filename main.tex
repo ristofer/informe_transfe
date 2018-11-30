@@ -139,7 +139,7 @@ Estudiar la transferencia de calor en intercambiadores de calor de placas planas
 \section{Antecedentes}
 Los intercambiadores de calor se utilizan para transmitir calor desde un fluido a otro sin la necesidad de mezclarlos. El calor se transmite a través de una pared termoconductora que separa ambos fluidos.
 Se tiene entonces un proceso de tres partes: transmisión de calor por parte del fluido caliente a la pared, conducción de calor a través de la pared y transmisión de calor por parte de la pared al fluido frío.
-
+\subsection{Conducción de calor}
 La ecuación que describe la transmisión de calor de un medio a la pared (o de la pared a n medio) corresponde a:
 
 \begin{equation}
@@ -195,6 +195,7 @@ Debido a que los fluidos del intercambiador no tienen una temperatura constante 
     A_m = \frac{A_1-A_2}{\ln{\frac{A_1}{A_2}}}
 \end{equation}
 
+\subsection{Calculo de flujo de calor}
 Otra relación para calcular el flujo de calor intercambiado utiliza la capacidad térmica específica de los fluidos $c_p$, el caudal másico $\dot{m}$ y la diferencia de temperatura entre la salida y la entrada $T_{A}-T_{E}$
 \begin{equation}
 \dot{Q} = \dot{m}c_p (T_{A}-T_{E})
@@ -203,12 +204,12 @@ Esta relación puede ser utilizada para ambos fluidos. Si no existe pérdida, lo
 \begin{equation}
 \dot{Q}_{wm} = \frac{(-\dot{Q}_{w1}) + \dot{Q}_{w2}}{2}
 \end{equation} 
-
+\subsection{Coeficiente medio de transmisión térmica}
 Con el flujo de calor medio calculado a partir de mediciones de temperatura y caudal, se puede calcular el coeficiente medio de transmisión térmica $k_m$ que caracteriza el intercambiador de calor:
 \begin{equation}
 k_m = \frac{\dot{Q}_{wm}}{A_m \Delta T_{ln}}
 \end{equation}
-
+\subsection{Grado de efectividad del intercambiador}
 Adicionalmente es posible caracterizar al intercambiador según el grado de efectividad $\eta_{cal}$ para calentamiento y $\eta_{enf}$ para enfriamiento:
 \begin{equation}
 \eta_{cal} = \frac{\dot{Q}_{w1}}{\dot{Q}_{w2}}
@@ -222,9 +223,11 @@ Adicionalmente es posible caracterizar al intercambiador según el grado de efec
 \newpage
 
 \section{Metodología}
+\subsection{Equipo a utilizar}
 El intercambiador de calor que se utiliza corresponde a un intercambiador de placas (Figuras \ref{fig:elev-inter} y \ref{fig:planta-inter}). Existe una fuente controlable de agua caliente y fría que adicionalmente entrega mediciones de temperatura en la entrada y salida del intercambiador. 
 \insertimage[\label{fig:elev-inter}]{elev.png}{width=7cm}{Intercambiador de placas. Vista en elevación.}
 \insertimage[\label{fig:planta-inter}]{planta.png}{width=7cm}{Intercambiador de placas. Vista en planta.}
+\subsection{Experiencias}
 Se realizan dos experiencias. En la primera experiencia se conecta la fuente de agua al intercambiador de tal forma que tanto el flujo caliente y flujo frío se encuentran en corriente paralela. En la segunda experiencia se invierte la salida con la entrada del fluido frío. De esta forma se tiene un intercambiador de calor con corriente inversa.
 
 Para cada experiencia se varía el caudal del flujo caliente y del flujo frío para tener 6 pares de mediciones distintas de caudales. Para cada par de datos de caudal se mide la temperatura en la salida y entrada para el flujo frío y para el flujo caliente.
@@ -233,8 +236,68 @@ Con los datos de caudal, temperatura, propiedades del agua y parámetros geomét
 
 \newpage
 \section{Memoria de Cálculo}
-
-
+\subsection{Caudal másico}
+\begin{equation}
+\dot{m} = \rho \dot{V}
+\end{equation}
+\begin{itemize}
+	\item $\dot{m}$ caudal másico $[\frac{kg}{s}]$
+	\item $\rho$ densidad del fluido $[\frac{kg}{m^3}]$
+	\item $\dot{V}$ caudal volumétrico $[\frac{m^3}{s}]$
+\end{itemize}
+\subsection{Temperatura media logarítmica}
+\begin{equation}
+\Delta T_{ln} = \frac{\Delta T_{max}-\Delta T_{min}}{\ln{ \frac{\Delta T_{max}}{\Delta T_{min}}}}
+\end{equation}
+\begin{itemize}
+	\item $\Delta T_{ln}$ temperatura media logarítmica $[K]$
+	\item $\Delta T_{max}$ máximo entre las diferencias de temperatura entre salida y entrada para flujo caliente y frío $[K]$
+	\item $\Delta T_{min}$ mínimo entre las diferencias de temperatura entre salida y entrada para flujo caliente y frío $[K]$
+\end{itemize}
+\subsection{Flujo de calor intercambiado}
+\begin{equation}
+\dot{Q} = \dot{m}c_p (T_{A}-T_{E})
+\end{equation}
+\begin{itemize}
+	\item $\dot{Q}$ flujo de calor intercambiado $[W]$
+	\item $\dot{m}$ caudal másico $[\frac{kg}{s}]$
+	\item $c_p$ capacidad térmica específica del fluido 
+	\item $T_{A}$ temperatura a la salida $[K]$
+	\item $T_{E}$ temperatura a la entrada $[K]$ 
+\end{itemize}
+\subsection{Flujo de calor medio}
+\begin{equation}
+\dot{Q}_{wm} = \frac{(-\dot{Q}_{w1}) + \dot{Q}_{w2}}{2}
+\end{equation} 
+\begin{itemize}
+	\item $\dot{Q}_{wm}$ flujo de calor medio $[W]$
+	\item $\dot{Q}_{w1}$ flujo de calor en el medio caliente $[W]$
+	\item $\dot{Q}_{w2}$ flujo de calor en el medio frío $[W]$
+\end{itemize}
+\subsection{Grado de efectividad del intercambiador}
+\begin{equation}
+\eta_{cal} = \frac{\dot{Q}_{w1}}{\dot{Q}_{w2}}
+\end{equation} 
+\begin{equation}
+\eta_{enf} = \frac{\dot{Q}_{w2}}{\dot{Q}_{w1}}
+\end{equation}
+\begin{itemize}
+	\item $\eta_{cal}$ grado de efectividad para calentamiento
+	\item $\eta_{enf}$ grado de efectividad para enfriamiento
+	\item $\dot{Q}_{w1}$ flujo de calor en el medio caliente $[W]$
+	\item $\dot{Q}_{w2}$ flujo de calor en el medio frío $[W]$
+\end{itemize}
+\subsection{Coeficiente medio de transmisión térmica}
+\begin{equation}
+k_m = \frac{\dot{Q}_{wm}}{A_m \Delta T_{ln}}
+\end{equation}
+\begin{itemize}
+	\item $k_m$ coeficiente medio de transmisión térmica
+	\item $\dot{Q}_{wm}$ flujo de calor medio $[W]$
+	\item $A_m$ superficie de intercambio de calor media logarítmica $[m^2]$
+	\item $\Delta T_{ln}$ temperatura media logarítmica entre los flujos $[K]$
+	
+\end{itemize}
 \newpage
 \section{Resultados}
 Los resultados para el experimento de el intercambiador con flujo paralelo se presentan en la siguiente tabla, cabe destacar que se utiliza la misma nomenclatura usada por la guía de laboratorio y por el equipo experimental:
