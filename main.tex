@@ -195,7 +195,7 @@ Debido a que los fluidos del intercambiador no tienen una temperatura constante 
     A_m = \frac{A_1-A_2}{\ln{\frac{A_1}{A_2}}}
 \end{equation}
 
-Otra relación para calcular el flujo de calor intercambiado utiliza la capacidad térmica específica de los fluidos $c_p$, el caudal másico $\dot{m}$ y la diferencia de temperatura entre la salida y la entrada $T_{1A}-T_{1E}$
+Otra relación para calcular el flujo de calor intercambiado utiliza la capacidad térmica específica de los fluidos $c_p$, el caudal másico $\dot{m}$ y la diferencia de temperatura entre la salida y la entrada $T_{A}-T_{E}$
 \begin{equation}
 \dot{Q} = \dot{m}c_p (T_{A}-T_{E})
 \end{equation}
@@ -204,6 +204,18 @@ Esta relación puede ser utilizada para ambos fluidos. Si no existe pérdida, lo
 \dot{Q}_{wm} = \frac{(-\dot{Q}_{w1}) + \dot{Q}_{w2}}{2}
 \end{equation} 
 
+Con el flujo de calor medio calculado a partir de mediciones de temperatura y caudal, se puede calcular el coeficiente medio de transmisión térmica $k_m$ que caracteriza el intercambiador de calor:
+\begin{equation}
+k_m = \frac{\dot{Q}_{wm}}{A_m \Delta T_{ln}}
+\end{equation}
+
+Adicionalmente es posible caracterizar al intercambiador según el grado de efectividad $\eta_{cal}$ para calentamiento y $\eta_{enf}$ para enfriamiento:
+\begin{equation}
+\eta_{cal} = \frac{\dot{Q}_{w1}}{\dot{Q}_{w2}}
+\end{equation} 
+\begin{equation}
+\eta_{enf} = \frac{\dot{Q}_{w2}}{\dot{Q}_{w1}}
+\end{equation}
 
 
 
